@@ -12,14 +12,15 @@
 <meta name="theme-color" content="#F5C800" />
 
 <!-- OGP：LINE / X / Slack などにURLを貼ったときのプレビューカード。
-     ※公開URLが決まったら、og:image と og:url を絶対URL
-       （例 https://xxxxx.netlify.app/images/ogp.jpg）に書き換えること。
-       相対パスのままだと、一部のSNSでカード画像が表示されない。 -->
+     og:url と og:image は絶対URLで書くこと（相対パスだと一部SNSでカード画像が出ない）。
+     公開先URLを変えた場合は、下の3箇所のドメインをまとめて直す。 -->
+<link rel="canonical" href="https://satsuki3930.github.io/satsuki-portfolio/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="池田皐月 ポートフォリオ" />
+<meta property="og:url" content="https://satsuki3930.github.io/satsuki-portfolio/" />
 <meta property="og:title" content="池田皐月 | 動画クリエイター - 縦型ショート動画・SNSコンテンツ制作" />
 <meta property="og:description" content="動画編集・AI活用・SNSコンテンツ制作のポートフォリオサイト。カフェ・店舗紹介のInstagramリールなど、縦型ショート動画を中心に制作しています。" />
-<meta property="og:image" content="images/ogp.jpg" />
+<meta property="og:image" content="https://satsuki3930.github.io/satsuki-portfolio/images/ogp.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="池田皐月 / Video Creator - 動画編集 × AI × SNS ポートフォリオ" />
@@ -157,7 +158,8 @@ img { max-width: 100%; display: block; }
 .sparkle { position: absolute; pointer-events: none; }
 .hero-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; position: relative; z-index: 1; width: 100%; }
 @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.1fr 0.9fr; } }
-.hero-headline { font-size: clamp(2.2rem, 6vw, 4.5rem); margin: 1rem 0; color: var(--ink); }
+/* 見出しが「映像で、もっと届く世界へ。」から実務寄りの長い一文になったため、上限を下げて収める */
+.hero-headline { font-size: clamp(1.85rem, 4.2vw, 3.3rem); margin: 1rem 0; color: var(--ink); }
 .hero-headline .accent { color: var(--yellow); -webkit-text-stroke: 2px var(--ink); }
 .hero-sub { font-size: 1.05rem; color: rgba(26,26,46,0.7); margin-bottom: 2rem; max-width: 42ch; }
 .hero-cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
@@ -219,7 +221,9 @@ img { max-width: 100%; display: block; }
 .about-photo-label { position: absolute; bottom: -1rem; left: 50%; transform: translateX(-50%); z-index: 2; }
 .about-name { font-size: 1.5rem; margin-bottom: 0.2rem; }
 .about-romaji { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: rgba(26,26,46,0.5); letter-spacing: 0.15em; margin-bottom: 1.2rem; }
-.about-paragraph { color: rgba(26,26,46,0.75); margin-bottom: 1rem; }
+/* 最初に読ませたい要約。以降の詳細段落より一段強く見せる */
+.about-lead { font-size: 1.05rem; font-weight: 800; color: var(--ink); margin-bottom: 1.2rem; padding-left: 0.9rem; border-left: 4px solid var(--yellow); }
+.about-paragraph { color: rgba(26,26,46,0.75); margin-bottom: 1rem; font-size: 0.92rem; }
 .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0; }
 
 /* Tools/Skills */
@@ -279,6 +283,8 @@ img { max-width: 100%; display: block; }
 @media (min-width: 500px) { .modal-detail-grid { grid-template-columns: 1fr 1fr; } }
 .modal-detail-grid dt { font-size: 0.7rem; color: rgba(26,26,46,0.5); font-weight: 700; margin-bottom: 2px; }
 .modal-detail-grid dd { margin: 0; font-size: 0.9rem; font-weight: 800; }
+/* 「目的」など一行に収まらない項目は2カラムをまたいで全幅で見せる */
+.modal-detail-grid .is-wide { grid-column: 1 / -1; }
 .modal-highlights h4 { font-size: 0.9rem; margin-bottom: 0.5rem; }
 .modal-highlights ul { margin: 0; padding-left: 1.1rem; font-size: 0.85rem; color: rgba(26,26,46,0.7); }
 
@@ -289,26 +295,25 @@ img { max-width: 100%; display: block; }
 <script>
 window.PROFILE = {
   name: "池田皐月",
-  romaji: "IKEDA SATSUKI",
+  romaji: "IKEDA SATSUKI / VIDEO CREATOR",
   photo: "images/profile.webp",
-  subcopy: "店舗・SNS向けの縦型ショート動画を中心に、撮影から編集まで制作しています。AIも活用し、企画・構成からスピーディに対応します。",
+  subcopy: "カフェ・店舗紹介を中心に、Instagramリール・TikTokなどの縦型ショート動画を制作。企画・撮影・編集からAIを活用した制作効率化まで対応します。",
+  // 先に結論を置き、詳細は下のbioParagraphsに回す（全文を読まれない前提の構成）
+  bioLead: "動画制作を学びながら、カフェ・店舗紹介を中心とした縦型ショート動画を制作しています。Premiere Proを軸に、AIも活用しながら企画・構成から編集まで対応しています。",
   bioParagraphs: [
     "動画制作を専門学校で学びながら、実案件やSNS向けコンテンツ制作に取り組んでいる24歳の動画クリエイターです。",
-    "Adobe Premiere Proを中心に、カフェ・店舗紹介のInstagramリールなど縦型ショート動画の撮影・編集に取り組んでいます。",
-    "ChatGPTやClaudeなどのAIツールも活用し、構成整理や画像素材の生成、下書きづくりまでスピーディに対応できる体制を作っています。",
-    "ご要望を丁寧にヒアリングし、完成イメージをすり合わせながら制作を進めることを大切にしています。"
+    "ChatGPTやClaudeなどのAIツールも活用し、構成整理や下書きづくりまでスピーディに対応できる体制を作っています。",
+    "ご要望を丁寧にヒアリングし、完成イメージをすり合わせながら進めることで、認識のズレが起きないように心がけています。"
   ],
-  tags: ["動画編集", "AI活用", "Premiere Pro", "SNSコンテンツ制作", "企画・構成"]
+  tags: ["動画編集", "撮影", "Premiere Pro", "縦型ショート動画", "企画・構成", "AI活用"]
 };
 
 window.CONTACT = {
   crowdworksUrl: "https://crowdworks.jp/public/employees/4962787",
   email: "satsuki3930@gmail.com",
-  sns: [
-    { name: "X（Twitter）", url: "" },
-    { name: "Instagram", url: "" },
-    { name: "YouTube", url: "" }
-  ]
+  // SNSはアカウント開設後にここへ追加する（例: { name: "Instagram", url: "https://..." }）。
+  // URLが無いものは表示されない実装だが、空のまま並べると紛らわしいので項目ごと持たない。
+  sns: []
 };
 
 window.SKILLS_LIST = ["動画編集", "撮影", "縦型動画", "テロップ", "構成", "SNSコンテンツ"];
@@ -320,10 +325,12 @@ window.TOOLS = [
   { name: "Claude", desc: "企画整理や台本のブラッシュアップに使用", emoji: "🧠", color: "var(--yellow)" }
 ];
 
+// AIは独立したサービスにせず、動画制作の強み（スピード）として1枚目の説明に含める。
+// 「何屋か」をブラさないため、主役は動画制作。
 window.SERVICES = [
-  { title: "動画制作", desc: "企画から編集まで。カフェ・店舗紹介のInstagramリールなど、目的に合わせた縦型ショート動画を制作します。", emoji: "🎬", color: "var(--coral)" },
-  { title: "AIを活用したコンテンツ制作", desc: "ChatGPT・Claudeなどを活用した構成整理・素材づくり・制作効率化をサポートします。", emoji: "🤖", color: "var(--teal)" },
-  { title: "SNS投稿用コンテンツ制作", desc: "Instagram・TikTokなど、SNSでの視聴に最適化した縦型ショート動画を制作します。", emoji: "📱", color: "var(--yellow)" }
+  { title: "店舗・カフェ紹介動画", desc: "お店の雰囲気や商品の魅力を、15〜30秒の縦型動画で伝えます。企画・撮影・編集まで一貫して担当し、AIも活用して企画から初稿までをスピーディに進めます。", emoji: "🎬", color: "var(--coral)" },
+  { title: "SNS向け縦型ショート動画", desc: "Instagramリール・TikTokなど、スマホでの視聴に合わせた縦型フォーマットで制作します。", emoji: "📱", color: "var(--yellow)" },
+  { title: "撮影", desc: "店舗やロケでの撮影に対応します。撮影も自分で行うため、編集の仕上がりを見据えたカット設計ができます。", emoji: "📷", color: "var(--teal)" }
 ];
 
 window.SKILLS_MARQUEE = [
@@ -342,6 +349,7 @@ window.WORKS = [
     localVideo: "videos/atelier-morihiko.mp4",
     externalUrl: "",
     description: "カフェ「ATELIER MORIHIKO」の魅力を伝える縦型リール動画です。撮影から編集まで担当しました。",
+    purpose: "店舗の雰囲気・商品の魅力を15〜30秒で伝える",
     responsibilities: ["撮影", "編集", "テロップ", "BGM選定"],
     tools: ["Premiere Pro"],
     duration: "17秒",
@@ -356,6 +364,7 @@ window.WORKS = [
     localVideo: "",
     externalUrl: "https://www.instagram.com/p/DbAuu7zzyDC/?hl=ja",
     description: "クラウドワークス経由でご依頼いただいたカフェ「カラナシ」紹介の縦型リール動画です。撮影から編集まで担当しました。",
+    purpose: "店舗の雰囲気・商品の魅力を15〜30秒で伝える",
     responsibilities: ["撮影", "編集"],
     tools: ["Premiere Pro"],
     note: "クラウドワークス経由の受注実績"
@@ -449,7 +458,7 @@ window.WORKS = [
       '<div class="container hero-grid">' +
       '<div>' +
       '<span class="badge-pop">✦ VIDEO CREATOR</span>' +
-      '<h1 class="hero-headline">映像で、<br /><span class="accent">もっと届く</span><br />世界へ。</h1>' +
+      '<h1 class="hero-headline">店舗・SNSの魅力を、<br /><span class="accent">短い動画</span>で伝える。</h1>' +
       '<p class="hero-sub">' + esc(PROFILE.subcopy) + "</p>" +
       '<div class="hero-cta-row">' +
       '<button type="button" class="btn-pop" data-nav="work">作品を見る →</button>' +
@@ -529,6 +538,7 @@ window.WORKS = [
       '<div class="reveal" style="transition-delay:120ms;">' +
       '<h2 class="section-title" style="margin-bottom:0.4rem;">' + esc(PROFILE.name) + '<span class="section-title-sub">について ✦</span></h2>' +
       '<p class="about-romaji">' + esc(PROFILE.romaji) + "</p>" +
+      (PROFILE.bioLead ? '<p class="about-lead">' + esc(PROFILE.bioLead) + "</p>" : "") +
       paragraphs +
       '<div class="about-tags">' + tags + "</div>" +
       '<a href="mailto:' + esc(CONTACT.email) + '" class="btn-pop">お仕事のご相談はこちら ✉</a>' +
@@ -649,7 +659,8 @@ window.WORKS = [
     if (work.responsibilities) detailRows += "<div><dt>担当範囲</dt><dd>" + esc(work.responsibilities.join(" / ")) + "</dd></div>";
     if (work.tools) detailRows += "<div><dt>使用ツール</dt><dd>" + esc(work.tools.join(" / ")) + "</dd></div>";
     if (work.duration) detailRows += "<div><dt>動画の長さ</dt><dd>" + esc(work.duration) + "</dd></div>";
-    if (work.note) detailRows += "<div><dt>補足</dt><dd>" + esc(work.note) + "</dd></div>";
+    if (work.purpose) detailRows += '<div class="is-wide"><dt>目的</dt><dd>' + esc(work.purpose) + "</dd></div>";
+    if (work.note) detailRows += '<div class="is-wide"><dt>補足</dt><dd>' + esc(work.note) + "</dd></div>";
 
     var highlightsHtml = work.highlights && work.highlights.length
       ? '<div class="modal-highlights"><h4>工夫したポイント</h4><ul>' + work.highlights.map(function (h) { return "<li>" + esc(h) + "</li>"; }).join("") + "</ul></div>"
