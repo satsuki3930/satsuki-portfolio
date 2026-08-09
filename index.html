@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>池田皐月 | 動画クリエイター - 縦型ショート動画・SNSコンテンツ制作</title>
+<meta name="description" content="動画編集・AI活用・SNSコンテンツ制作のポートフォリオサイト。カフェ・店舗紹介のInstagramリールなど、縦型ショート動画を中心に制作しています。" />
+
+<!-- ファビコン（ブラウザのタブに出る小さいアイコン） -->
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png" />
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+<meta name="theme-color" content="#F5C800" />
+
+<!-- OGP：LINE / X / Slack などにURLを貼ったときのプレビューカード。
+     ※公開URLが決まったら、og:image と og:url を絶対URL
+       （例 https://xxxxx.netlify.app/images/ogp.jpg）に書き換えること。
+       相対パスのままだと、一部のSNSでカード画像が表示されない。 -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="池田皐月 ポートフォリオ" />
+<meta property="og:title" content="池田皐月 | 動画クリエイター - 縦型ショート動画・SNSコンテンツ制作" />
+<meta property="og:description" content="動画編集・AI活用・SNSコンテンツ制作のポートフォリオサイト。カフェ・店舗紹介のInstagramリールなど、縦型ショート動画を中心に制作しています。" />
+<meta property="og:image" content="images/ogp.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="池田皐月 / Video Creator - 動画編集 × AI × SNS ポートフォリオ" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Mono&display=swap');
+
+:root {
+  --yellow: #F5C800;
+  --yellow-light: #FFF3B0;
+  --yellow-dark: #E6B800;
+  --coral: #FF6B6B;
+  --teal: #4ECDC4;
+  --cream: #FFFBF0;
+  --ink: #1A1A2E;
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Nunito', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  font-weight: 600;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+h1, h2, h3, h4 { font-family: 'Nunito', 'Hiragino Sans', 'Yu Gothic', sans-serif; font-weight: 900; line-height: 1.1; margin: 0; }
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; background: none; border: none; color: inherit; }
+img { max-width: 100%; display: block; }
+::selection { background: var(--yellow); color: var(--ink); }
+.font-mono { font-family: 'Space Mono', monospace; }
+
+.container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+@media (min-width: 640px) { .container { padding: 0 2rem; } }
+@media (min-width: 1024px) { .container { padding: 0 4rem; } }
+
+/* Buttons */
+.btn-pop, .btn-pop-outline {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem;
+  padding: 0.75rem 1.75rem; border-radius: 9999px; border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 0.15s var(--ease-bounce), box-shadow 0.15s var(--ease-bounce), background 0.15s;
+  cursor: pointer;
+}
+.btn-pop { background: var(--yellow); color: var(--ink); }
+.btn-pop-outline { background: transparent; color: var(--ink); }
+.btn-pop:hover, .btn-pop-outline:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+.btn-pop-outline:hover { background: var(--yellow-light); }
+.btn-pop:active, .btn-pop-outline:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+
+/* Card */
+.card-pop {
+  background: #fff; border: 3px solid var(--ink); border-radius: 1.25rem;
+  box-shadow: 6px 6px 0 var(--ink);
+  transition: transform 0.2s var(--ease-bounce), box-shadow 0.2s var(--ease-bounce);
+}
+.card-pop:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink); }
+
+/* Badge */
+.badge-pop {
+  display: inline-flex; align-items: center; gap: 0.25rem;
+  background: var(--yellow-light); color: var(--ink);
+  font-weight: 700; font-size: 0.75rem; padding: 0.25rem 0.75rem;
+  border-radius: 9999px; border: 2px solid var(--ink); white-space: nowrap;
+}
+
+/* Reveal on scroll */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-bounce); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Marquee */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { display: inline-flex; gap: 1.5rem; animation: marquee 25s linear infinite; white-space: nowrap; }
+.marquee-wrap { overflow: hidden; white-space: nowrap; }
+
+/* Float */
+@keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 33% { transform: translateY(-8px) rotate(2deg); } 66% { transform: translateY(-4px) rotate(-1deg); } }
+.animate-float { animation: float 4s ease-in-out infinite; }
+
+/* Wiggle */
+@keyframes wiggle { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-3deg); } 75% { transform: rotate(3deg); } }
+.hover-wiggle:hover { animation: wiggle 0.4s ease-in-out; }
+
+/* Pulse (status dot) */
+@keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.pulse-dot { animation: pulse-dot 1.6s ease-in-out infinite; }
+
+/* アニメーションを減らす設定のユーザー向け */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* Header / Nav */
+.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background 0.3s, border-color 0.3s; background: transparent; border-bottom: 2px solid transparent; }
+.site-header.is-scrolled { background: rgba(255,251,240,0.95); backdrop-filter: blur(12px); border-color: var(--ink); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
+.logo-btn { display: flex; align-items: center; gap: 0.5rem; }
+.logo-photo { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--ink); object-fit: cover; box-shadow: 2px 2px 0 var(--ink); }
+.logo-text { font-weight: 900; font-size: 1rem; color: var(--ink); }
+.nav-links { display: none; align-items: center; gap: 1.5rem; }
+@media (min-width: 860px) { .nav-links { display: flex; } }
+.nav-link { font-weight: 700; color: rgba(26,26,46,0.7); font-size: 0.9rem; position: relative; padding-bottom: 2px; }
+.nav-link:hover { color: var(--ink); }
+.nav-link::after { content: ""; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--yellow); border-radius: 2px; transition: width 0.3s; }
+.nav-link:hover::after { width: 100%; }
+.nav-cta { display: none; }
+@media (min-width: 860px) { .nav-cta { display: inline-flex; font-size: 0.85rem; padding: 0.6rem 1.4rem; } }
+.hamburger-btn { display: inline-flex; flex-direction: column; gap: 4px; padding: 8px; }
+@media (min-width: 860px) { .hamburger-btn { display: none; } }
+.hamburger-btn span { width: 22px; height: 3px; background: var(--ink); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+.mobile-nav { display: none; flex-direction: column; background: var(--cream); border-top: 2px solid var(--ink); }
+.mobile-nav.is-open { display: flex; }
+.mobile-nav a { padding: 14px 1.5rem; border-bottom: 1px solid rgba(26,26,46,0.1); font-weight: 700; }
+
+/* Hero */
+.hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; overflow: hidden; padding: 5rem 0 5rem; background: var(--cream); }
+.hero-decor { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.hero-decor .circle-yellow { position: absolute; top: -8rem; right: -8rem; width: 600px; height: 600px; border-radius: 50%; background: var(--yellow); opacity: 0.3; }
+.hero-decor .circle-teal { position: absolute; bottom: 5rem; left: -4rem; width: 192px; height: 192px; border-radius: 50%; background: var(--teal); opacity: 0.2; }
+.sparkle { position: absolute; pointer-events: none; }
+.hero-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; position: relative; z-index: 1; width: 100%; }
+@media (min-width: 900px) { .hero-grid { grid-template-columns: 1.1fr 0.9fr; } }
+.hero-headline { font-size: clamp(2.2rem, 6vw, 4.5rem); margin: 1rem 0; color: var(--ink); }
+.hero-headline .accent { color: var(--yellow); -webkit-text-stroke: 2px var(--ink); }
+.hero-sub { font-size: 1.05rem; color: rgba(26,26,46,0.7); margin-bottom: 2rem; max-width: 42ch; }
+.hero-cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
+.hero-photo-bg { position: absolute; width: 300px; height: 300px; border-radius: 50%; background: var(--yellow); border: 4px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); }
+.hero-photo { position: relative; width: 260px; height: 260px; border-radius: 50%; object-fit: cover; border: 4px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); }
+.hero-float-badge { position: absolute; z-index: 2; }
+.scroll-cue { position: absolute; left: 50%; bottom: 1.2rem; transform: translateX(-50%); font-size: 1.4rem; color: var(--ink); animation: float 2.2s ease-in-out infinite; }
+
+/* スマホではHeroが縦に長くなりすぎ、↓アイコンが顔写真に重なるため調整 */
+@media (max-width: 640px) {
+  .hero { padding: 4.5rem 0 4rem; }
+  .hero-grid { gap: 2rem; }
+  .hero-headline { margin: 0.75rem 0; }
+  .hero-sub { margin-bottom: 1.5rem; }
+  .hero-photo { width: 200px; height: 200px; }
+  .hero-photo-bg { width: 236px; height: 236px; }
+  .scroll-cue { display: none; }
+}
+
+/* Section */
+.section { padding: 5rem 0; }
+.section-title { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.75rem; }
+.section-title-sub { font-size: 0.85rem; font-weight: 700; color: rgba(26,26,46,0.5); }
+
+/* Work grid */
+.work-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 340px; margin: 0 auto; }
+@media (min-width: 700px) { .work-grid { grid-template-columns: repeat(2, 1fr); max-width: 620px; } }
+@media (min-width: 1000px) { .work-grid { grid-template-columns: repeat(3, 1fr); max-width: 900px; } }
+.work-card { overflow: hidden; text-align: left; width: 100%; }
+/* 縦型ショート動画がメインのため、カードも9:16で見せる（横長作品は is-landscape を付ける） */
+.work-card-media { aspect-ratio: 9 / 16; position: relative; overflow: hidden; border-radius: calc(1.25rem - 3px) calc(1.25rem - 3px) 0 0; }
+.work-card-media.is-landscape { aspect-ratio: 16 / 9; }
+.work-card-media img, .work-card-media video { width: 100%; height: 100%; object-fit: cover; }
+/* サムネイル素材が未提供の作品用プレースホルダー */
+.work-card-media.is-emoji {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem;
+  background: linear-gradient(150deg, var(--yellow-light) 0%, #FFE9A8 100%);
+  font-size: 4rem;
+}
+.work-card-media.is-emoji .placeholder-note {
+  font-size: 0.78rem; font-weight: 800; color: rgba(26,26,46,0.55);
+  border: 2px solid rgba(26,26,46,0.25); border-radius: 9999px; padding: 0.2rem 0.8rem; background: rgba(255,255,255,0.6);
+}
+.work-card-body { padding: 1.5rem; }
+.work-card-tags { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+.work-card-tags .cat { font-size: 0.75rem; color: rgba(26,26,46,0.5); font-weight: 700; }
+.work-card-title { font-size: 1.15rem; margin-bottom: 0.4rem; }
+.work-card-desc { font-size: 0.88rem; color: rgba(26,26,46,0.65); }
+.work-note { margin-top: 1.5rem; text-align: center; font-size: 0.85rem; color: rgba(26,26,46,0.4); font-weight: 700; }
+
+/* About */
+.about-section { background: var(--yellow-light); position: relative; overflow: hidden; }
+.about-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+@media (min-width: 860px) { .about-grid { grid-template-columns: 1fr 1fr; } }
+.about-photo-wrap { display: flex; justify-content: center; position: relative; width: fit-content; margin: 0 auto; }
+.about-photo-bg { position: absolute; inset: -1rem; border-radius: 50%; background: var(--yellow); border: 4px solid var(--ink); z-index: 0; }
+.about-photo { position: relative; z-index: 1; width: 220px; height: 220px; border-radius: 50%; object-fit: cover; border: 4px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); }
+.about-photo-label { position: absolute; bottom: -1rem; left: 50%; transform: translateX(-50%); z-index: 2; }
+.about-name { font-size: 1.5rem; margin-bottom: 0.2rem; }
+.about-romaji { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: rgba(26,26,46,0.5); letter-spacing: 0.15em; margin-bottom: 1.2rem; }
+.about-paragraph { color: rgba(26,26,46,0.75); margin-bottom: 1rem; }
+.about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0; }
+
+/* Tools/Skills */
+.marquee-strip { background: var(--yellow); border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); padding: 1rem 0; margin-bottom: 4rem; }
+.marquee-item { font-weight: 700; font-size: 0.9rem; }
+.tool-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 4rem; }
+.skills-tag-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; }
+@media (min-width: 700px) { .tool-grid { grid-template-columns: repeat(2, 1fr); } }
+.tool-card { padding: 1.2rem; display: flex; gap: 0.9rem; align-items: flex-start; }
+.tool-emoji { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 2px solid var(--ink); flex-shrink: 0; }
+.tool-card h4 { font-size: 0.95rem; margin-bottom: 0.2rem; }
+.tool-card p { font-size: 0.8rem; color: rgba(26,26,46,0.6); }
+.services-title { font-size: 1.15rem; margin-bottom: 1.2rem; }
+.service-grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
+@media (min-width: 700px) { .service-grid { grid-template-columns: repeat(3, 1fr); } }
+.service-card { padding: 1.4rem; }
+.service-emoji-box { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 2px solid var(--ink); margin-bottom: 1rem; }
+.service-card h4 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+.service-card p { font-size: 0.85rem; color: rgba(26,26,46,0.65); }
+
+/* Contact */
+.contact-section { background: var(--yellow); position: relative; overflow: hidden; text-align: center; }
+.contact-inner { max-width: 640px; margin: 0 auto; position: relative; z-index: 1; }
+.contact-photo { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 4px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); margin: 0 auto 2rem; }
+.contact-sub { font-size: 1.05rem; color: rgba(26,26,46,0.75); margin: 1rem 0 2rem; }
+.contact-cta-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
+.status-pill { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.6rem 1.2rem; border-radius: 9999px; background: #fff; border: 2px solid var(--ink); font-weight: 700; font-size: 0.85rem; }
+.status-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--teal); }
+.contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 1.2rem; }
+
+/* Footer */
+.site-footer { background: var(--ink); border-top: 3px solid var(--ink); padding: 2rem 0; }
+.footer-inner { display: flex; flex-direction: column; gap: 1rem; align-items: center; text-align: center; }
+@media (min-width: 700px) { .footer-inner { flex-direction: row; justify-content: space-between; text-align: left; } }
+.footer-brand { display: flex; align-items: center; gap: 0.75rem; }
+.footer-photo { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid var(--yellow); }
+.footer-brand span { color: #fff; font-weight: 700; font-size: 0.9rem; }
+.footer-tag { color: rgba(255,255,255,0.4); font-weight: 700; font-size: 0.85rem; }
+
+/* Modal */
+.modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(26,26,46,0.6); z-index: 100; align-items: center; justify-content: center; padding: 1.25rem; }
+.modal-backdrop.is-open { display: flex; }
+.modal-panel { background: #fff; border: 3px solid var(--ink); border-radius: 1.5rem; box-shadow: 8px 8px 0 var(--ink); max-width: 640px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; }
+.modal-close { position: absolute; top: 12px; right: 12px; z-index: 5; width: 36px; height: 36px; border-radius: 50%; background: #fff; border: 2px solid var(--ink); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 900; }
+.modal-media { background: var(--yellow-light); border-radius: calc(1.5rem - 3px) calc(1.5rem - 3px) 0 0; overflow: hidden; }
+.modal-video-wrap { width: 100%; background: #000; display: flex; justify-content: center; }
+/* 縦型動画を左右に引き伸ばさず、元のアスペクト比のまま中央に置く。
+   aspect-ratioで先に高さを確保しておくと、動画の読み込み後にモーダルの高さが飛ばない。 */
+.modal-video-native { display: block; width: 100%; max-width: 280px; aspect-ratio: 9 / 16; max-height: 70vh; background: #000; object-fit: contain; }
+.modal-video-native.is-landscape { max-width: 100%; aspect-ratio: 16 / 9; }
+.modal-media-emoji { display: flex; align-items: center; justify-content: center; font-size: 5rem; height: 220px; }
+.modal-instagram-cta { display: flex; justify-content: center; padding: 1.2rem; }
+.modal-body { padding: 1.6rem 1.6rem 2rem; }
+.modal-title { font-size: 1.4rem; margin: 0.6rem 0; }
+.modal-desc { color: rgba(26,26,46,0.7); margin-bottom: 1.2rem; }
+.modal-detail-grid { display: grid; grid-template-columns: 1fr; gap: 0.9rem; margin-bottom: 1.2rem; }
+@media (min-width: 500px) { .modal-detail-grid { grid-template-columns: 1fr 1fr; } }
+.modal-detail-grid dt { font-size: 0.7rem; color: rgba(26,26,46,0.5); font-weight: 700; margin-bottom: 2px; }
+.modal-detail-grid dd { margin: 0; font-size: 0.9rem; font-weight: 800; }
+.modal-highlights h4 { font-size: 0.9rem; margin-bottom: 0.5rem; }
+.modal-highlights ul { margin: 0; padding-left: 1.1rem; font-size: 0.85rem; color: rgba(26,26,46,0.7); }
+
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+window.PROFILE = {
+  name: "池田皐月",
+  romaji: "IKEDA SATSUKI",
+  photo: "images/profile.webp",
+  subcopy: "店舗・SNS向けの縦型ショート動画を中心に、撮影から編集まで制作しています。AIも活用し、企画・構成からスピーディに対応します。",
+  bioParagraphs: [
+    "動画制作を専門学校で学びながら、実案件やSNS向けコンテンツ制作に取り組んでいる24歳の動画クリエイターです。",
+    "Adobe Premiere Proを中心に、カフェ・店舗紹介のInstagramリールなど縦型ショート動画の撮影・編集に取り組んでいます。",
+    "ChatGPTやClaudeなどのAIツールも活用し、構成整理や画像素材の生成、下書きづくりまでスピーディに対応できる体制を作っています。",
+    "ご要望を丁寧にヒアリングし、完成イメージをすり合わせながら制作を進めることを大切にしています。"
+  ],
+  tags: ["動画編集", "AI活用", "Premiere Pro", "SNSコンテンツ制作", "企画・構成"]
+};
+
+window.CONTACT = {
+  crowdworksUrl: "https://crowdworks.jp/public/employees/4962787",
+  email: "satsuki3930@gmail.com",
+  sns: [
+    { name: "X（Twitter）", url: "" },
+    { name: "Instagram", url: "" },
+    { name: "YouTube", url: "" }
+  ]
+};
+
+window.SKILLS_LIST = ["動画編集", "撮影", "縦型動画", "テロップ", "構成", "SNSコンテンツ"];
+
+window.TOOLS = [
+  { name: "Adobe Premiere Pro", desc: "カット編集からカラー補正まで、動画編集全般のメインツールとして使用", emoji: "🎬", color: "var(--coral)" },
+  { name: "Canva", desc: "サムネイルやSNS投稿用画像の作成に使用", emoji: "🎨", color: "var(--teal)" },
+  { name: "ChatGPT", desc: "構成案・台本・タイトル案の壁打ちや画像生成に使用", emoji: "💬", color: "var(--teal)" },
+  { name: "Claude", desc: "企画整理や台本のブラッシュアップに使用", emoji: "🧠", color: "var(--yellow)" }
+];
+
+window.SERVICES = [
+  { title: "動画制作", desc: "企画から編集まで。カフェ・店舗紹介のInstagramリールなど、目的に合わせた縦型ショート動画を制作します。", emoji: "🎬", color: "var(--coral)" },
+  { title: "AIを活用したコンテンツ制作", desc: "ChatGPT・Claudeなどを活用した構成整理・素材づくり・制作効率化をサポートします。", emoji: "🤖", color: "var(--teal)" },
+  { title: "SNS投稿用コンテンツ制作", desc: "Instagram・TikTokなど、SNSでの視聴に最適化した縦型ショート動画を制作します。", emoji: "📱", color: "var(--yellow)" }
+];
+
+window.SKILLS_MARQUEE = [
+  "Premiere Pro", "ChatGPT", "Claude", "Canva",
+  "Instagramリール", "カフェ紹介動画", "AI活用", "動画編集",
+  "縦型ショート動画", "企画・構成"
+];
+
+window.WORKS = [
+  {
+    id: 1,
+    emoji: "☕",
+    title: "カフェ紹介Instagramリール『ATELIER MORIHIKO』",
+    category: "Cafe / Shop",
+    thumbnail: "images/atelier-morihiko-thumb.webp",
+    localVideo: "videos/atelier-morihiko.mp4",
+    externalUrl: "",
+    description: "カフェ「ATELIER MORIHIKO」の魅力を伝える縦型リール動画です。撮影から編集まで担当しました。",
+    responsibilities: ["撮影", "編集", "テロップ", "BGM選定"],
+    tools: ["Premiere Pro"],
+    duration: "17秒",
+    highlights: ["店内の雰囲気が伝わるカットを選び、テンポよく構成した", "縦型フォーマットでスマホ視聴時の見やすさを意識した"]
+  },
+  {
+    id: 2,
+    emoji: "☕",
+    title: "カフェ紹介Instagramリール『カラナシ』",
+    category: "Cafe / Shop",
+    thumbnail: "",
+    localVideo: "",
+    externalUrl: "https://www.instagram.com/p/DbAuu7zzyDC/?hl=ja",
+    description: "クラウドワークス経由でご依頼いただいたカフェ「カラナシ」紹介の縦型リール動画です。撮影から編集まで担当しました。",
+    responsibilities: ["撮影", "編集"],
+    tools: ["Premiere Pro"],
+    note: "クラウドワークス経由の受注実績"
+  },
+  {
+    id: 3,
+    emoji: "🎬",
+    title: "サッポロ旅動画",
+    category: "Short Video",
+    thumbnail: "images/sapporo-trip-thumb.webp",
+    localVideo: "videos/sapporo-trip.mp4",
+    externalUrl: "",
+    description: "札幌旅行の様子をまとめた縦型のShort動画です。撮影から編集まで担当しました。",
+    responsibilities: ["撮影", "編集"],
+    tools: ["Premiere Pro"],
+    duration: "32秒"
+  }
+];
+
+</script>
+<script>
+(function () {
+  "use strict";
+
+  var PROFILE = window.PROFILE;
+  var CONTACT = window.CONTACT;
+  var TOOLS = window.TOOLS;
+  var SERVICES = window.SERVICES;
+  var WORKS = window.WORKS;
+  var SKILLS_MARQUEE = window.SKILLS_MARQUEE;
+  var SKILLS_LIST = window.SKILLS_LIST;
+
+  var NAV_ITEMS = [
+    { id: "work", label: "作品" },
+    { id: "about", label: "プロフィール" },
+    { id: "skills", label: "スキル" },
+    { id: "contact", label: "お問い合わせ" }
+  ];
+
+  function esc(str) {
+    if (str == null) return "";
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function isInstagramUrl(url) {
+    return /instagram\.com/i.test(url || "");
+  }
+
+  /* ---------------- Header ---------------- */
+  function renderHeader() {
+    var links = NAV_ITEMS.map(function (item) {
+      return '<a href="#' + item.id + '" class="nav-link" data-nav="' + item.id + '">' + esc(item.label) + "</a>";
+    }).join("");
+    var mobileLinks = NAV_ITEMS.map(function (item) {
+      return '<a href="#' + item.id + '" data-nav-mobile="' + item.id + '">' + esc(item.label) + "</a>";
+    }).join("");
+
+    return (
+      '<header class="site-header" id="site-header">' +
+      '<div class="container header-inner">' +
+      '<button type="button" class="logo-btn" data-nav="hero">' +
+      '<img src="' + PROFILE.photo + '" alt="' + esc(PROFILE.name) + '" class="logo-photo hover-wiggle" />' +
+      '<span class="logo-text">' + esc(PROFILE.name) + " ✦</span>" +
+      "</button>" +
+      '<nav class="nav-links">' + links + "</nav>" +
+      '<a href="mailto:' + esc(CONTACT.email) + '" class="btn-pop nav-cta">お仕事のご相談 ✉</a>' +
+      '<button type="button" class="hamburger-btn" id="hamburger-btn" aria-label="メニューを開く" aria-expanded="false">' +
+      "<span></span><span></span><span></span>" +
+      "</button>" +
+      "</div>" +
+      '<nav class="mobile-nav" id="mobile-nav">' + mobileLinks + "</nav>" +
+      "</header>"
+    );
+  }
+
+  /* ---------------- Hero ---------------- */
+  function renderHero() {
+    return (
+      '<section id="hero" class="hero">' +
+      '<div class="hero-decor">' +
+      '<div class="circle-yellow"></div><div class="circle-teal"></div>' +
+      '<span class="sparkle animate-float" style="top:8rem;left:15%;font-size:1.8rem;">✦</span>' +
+      '<span class="sparkle animate-float" style="top:12rem;right:20%;font-size:1.4rem;color:var(--coral);animation-delay:1s;">★</span>' +
+      '<span class="sparkle animate-float" style="bottom:8rem;left:30%;font-size:1.2rem;color:var(--teal);animation-delay:2s;">✦</span>' +
+      '<span class="sparkle animate-float" style="top:60%;right:10%;font-size:2.2rem;animation-delay:0.5s;">✨</span>' +
+      "</div>" +
+      '<div class="container hero-grid">' +
+      '<div>' +
+      '<span class="badge-pop">✦ VIDEO CREATOR</span>' +
+      '<h1 class="hero-headline">映像で、<br /><span class="accent">もっと届く</span><br />世界へ。</h1>' +
+      '<p class="hero-sub">' + esc(PROFILE.subcopy) + "</p>" +
+      '<div class="hero-cta-row">' +
+      '<button type="button" class="btn-pop" data-nav="work">作品を見る →</button>' +
+      '<a href="mailto:' + esc(CONTACT.email) + '" class="btn-pop-outline">お仕事のご相談 ✉</a>' +
+      "</div>" +
+      "</div>" +
+      '<div class="hero-visual">' +
+      '<div class="hero-photo-bg"></div>' +
+      '<img src="' + PROFILE.photo + '" alt="' + esc(PROFILE.name) + '" class="hero-photo animate-float" />' +
+      '<span class="hero-float-badge animate-float" style="top:-1rem;right:-0.5rem;animation-delay:0.5s;">' +
+      '<span class="badge-pop" style="background:var(--coral);color:#fff;">✦ 動画クリエイター</span></span>' +
+      '<span class="hero-float-badge animate-float" style="bottom:-1rem;left:-0.5rem;animation-delay:1.5s;">' +
+      '<span class="badge-pop" style="background:var(--teal);">AI × SNS ✨</span></span>' +
+      "</div>" +
+      "</div>" +
+      '<button type="button" class="scroll-cue" data-nav="work" aria-label="下にスクロール">↓</button>' +
+      "</section>"
+    );
+  }
+
+  /* ---------------- Work ---------------- */
+  function workMediaHtml(work) {
+    var orientClass = work.orientation === "landscape" ? " is-landscape" : "";
+    if (work.thumbnail) {
+      return '<div class="work-card-media' + orientClass + '"><img src="' + work.thumbnail + '" alt="' + esc(work.title) + '" loading="lazy" decoding="async" /></div>';
+    }
+    var note = isInstagramUrl(work.externalUrl) ? '<span class="placeholder-note">Instagramで公開中 ↗</span>' : "";
+    return '<div class="work-card-media is-emoji' + orientClass + '">' + (work.emoji || "🎬") + note + "</div>";
+  }
+
+  function renderWorkCard(work) {
+    return (
+      '<button type="button" class="card-pop work-card" data-work-id="' + work.id + '">' +
+      workMediaHtml(work) +
+      '<div class="work-card-body">' +
+      '<div class="work-card-tags">' +
+      (work.tag ? '<span class="badge-pop" style="background:' + work.tagColor + ';' + (work.tagColor === "#F5C800" ? "" : "color:#fff;") + '">' + esc(work.tag) + "</span>" : "") +
+      '<span class="cat">' + esc(work.category) + "</span>" +
+      "</div>" +
+      '<h3 class="work-card-title">' + esc(work.title) + "</h3>" +
+      '<p class="work-card-desc">' + esc(work.description) + "</p>" +
+      "</div></button>"
+    );
+  }
+
+  function renderWorkSection() {
+    var cards = WORKS.map(renderWorkCard).join("");
+    return (
+      '<section id="work" class="section">' +
+      '<div class="container">' +
+      '<h2 class="section-title reveal">作品・実績 ✦</h2>' +
+      '<div class="work-grid">' + cards + "</div>" +
+      '<p class="work-note reveal">✦ 動画制作のご相談・ご依頼を受付中です。</p>' +
+      "</div></section>"
+    );
+  }
+
+  /* ---------------- About ---------------- */
+  function renderAbout() {
+    var paragraphs = PROFILE.bioParagraphs.map(function (p) {
+      return '<p class="about-paragraph">' + esc(p) + "</p>";
+    }).join("");
+    var tags = PROFILE.tags.map(function (t) {
+      return '<span class="badge-pop">' + esc(t) + "</span>";
+    }).join("");
+
+    return (
+      '<section id="about" class="section about-section">' +
+      '<span class="sparkle animate-float" style="top:2rem;right:2rem;font-size:1.8rem;animation-delay:1s;">✦</span>' +
+      '<span class="sparkle animate-float" style="bottom:2rem;left:2rem;font-size:1.4rem;color:var(--coral);animation-delay:2s;">★</span>' +
+      '<div class="container about-grid">' +
+      '<div class="about-photo-wrap reveal">' +
+      '<div class="about-photo-bg"></div>' +
+      '<img src="' + PROFILE.photo + '" alt="' + esc(PROFILE.name) + '" class="about-photo" loading="lazy" decoding="async" />' +
+      '<span class="badge-pop about-photo-label">✦ 動画 × AI × SNS</span>' +
+      "</div>" +
+      '<div class="reveal" style="transition-delay:120ms;">' +
+      '<h2 class="section-title" style="margin-bottom:0.4rem;">' + esc(PROFILE.name) + '<span class="section-title-sub">について ✦</span></h2>' +
+      '<p class="about-romaji">' + esc(PROFILE.romaji) + "</p>" +
+      paragraphs +
+      '<div class="about-tags">' + tags + "</div>" +
+      '<a href="mailto:' + esc(CONTACT.email) + '" class="btn-pop">お仕事のご相談はこちら ✉</a>' +
+      "</div></div></section>"
+    );
+  }
+
+  /* ---------------- Skills / Tools ---------------- */
+  function renderSkills() {
+    var marqueeItems = SKILLS_MARQUEE.concat(SKILLS_MARQUEE).map(function (s) {
+      return '<span class="marquee-item">' + esc(s) + '</span><span style="color:var(--ink);">✦</span>';
+    }).join("");
+
+    var skillTags = SKILLS_LIST.map(function (s) {
+      return '<span class="badge-pop">' + esc(s) + "</span>";
+    }).join("");
+
+    var toolCards = TOOLS.map(function (t) {
+      return (
+        '<div class="card-pop tool-card"><div class="tool-emoji" style="background:' + t.color + ';">' + t.emoji + "</div>" +
+        "<div><h4>" + esc(t.name) + "</h4><p>" + esc(t.desc) + "</p></div></div>"
+      );
+    }).join("");
+
+    var serviceCards = SERVICES.map(function (s) {
+      return (
+        '<div class="card-pop service-card"><div class="service-emoji-box" style="background:' + s.color + ';">' + s.emoji + "</div>" +
+        "<h4>" + esc(s.title) + "</h4><p>" + esc(s.desc) + "</p></div>"
+      );
+    }).join("");
+
+    return (
+      '<section id="skills" class="section">' +
+      '<div class="marquee-strip"><div class="marquee-wrap"><div class="marquee-track">' + marqueeItems + "</div></div></div>" +
+      '<div class="container">' +
+      '<h2 class="section-title reveal">スキル ✦</h2>' +
+      '<div class="reveal skills-tag-row">' + skillTags + "</div>" +
+      '<h3 class="services-title reveal">使用ツール ✦</h3>' +
+      '<div class="tool-grid">' + toolCards + "</div>" +
+      '<div class="reveal">' +
+      '<h3 class="services-title">提供できること ✦</h3>' +
+      '<div class="service-grid">' + serviceCards + "</div>" +
+      "</div></div></section>"
+    );
+  }
+
+  /* ---------------- Contact ---------------- */
+  function renderContact() {
+    var links = "";
+    if (CONTACT.crowdworksUrl) {
+      links += '<a href="' + esc(CONTACT.crowdworksUrl) + '" target="_blank" rel="noopener noreferrer" class="btn-pop-outline" style="font-size:0.85rem;padding:0.6rem 1.4rem;">CrowdWorks →</a>';
+    }
+    CONTACT.sns.forEach(function (s) {
+      if (s.url) {
+        links += '<a href="' + esc(s.url) + '" target="_blank" rel="noopener noreferrer" class="btn-pop-outline" style="font-size:0.85rem;padding:0.6rem 1.4rem;">' + esc(s.name) + "</a>";
+      }
+    });
+
+    return (
+      '<section id="contact" class="section contact-section">' +
+      '<span class="sparkle animate-float" style="top:2rem;left:10%;font-size:3rem;">✦</span>' +
+      '<span class="sparkle animate-float" style="bottom:2rem;right:10%;font-size:2.5rem;animation-delay:1.5s;">★</span>' +
+      '<span class="sparkle animate-float" style="top:50%;right:5%;font-size:1.8rem;color:var(--coral);animation-delay:0.8s;">✨</span>' +
+      '<div class="container contact-inner">' +
+      '<img src="' + PROFILE.photo + '" alt="' + esc(PROFILE.name) + '" class="contact-photo animate-float" loading="lazy" decoding="async" />' +
+      '<h2 class="section-title" style="justify-content:center;">お仕事のご相談 ✦</h2>' +
+      '<p class="contact-sub">動画制作・SNSコンテンツについて、お気軽にご相談ください。</p>' +
+      '<div class="contact-cta-row">' +
+      '<a href="mailto:' + esc(CONTACT.email) + '" class="btn-pop" style="background:var(--ink);color:#fff;font-size:1rem;padding:1rem 2rem;">メールを送る ✉</a>' +
+      "</div>" +
+      '<div class="status-pill"><span class="status-dot pulse-dot"></span>現在、新規案件受付中です！</div>' +
+      (links ? '<div class="contact-links">' + links + "</div>" : "") +
+      "</div></section>"
+    );
+  }
+
+  /* ---------------- Footer ---------------- */
+  function renderFooter() {
+    return (
+      '<footer class="site-footer"><div class="container footer-inner">' +
+      '<div class="footer-brand"><img src="' + PROFILE.photo + '" alt="' + esc(PROFILE.name) + '" class="footer-photo" loading="lazy" decoding="async" />' +
+      "<span>© " + new Date().getFullYear() + " " + esc(PROFILE.name) + "</span></div>" +
+      '<span class="footer-tag">動画 × AI × SNSコンテンツ制作 ✦</span>' +
+      "</div></footer>"
+    );
+  }
+
+  /* ---------------- Modal ---------------- */
+  function modalMediaHtml(work) {
+    if (work.localVideo) {
+      var posterAttr = work.thumbnail ? ' poster="' + esc(work.thumbnail) + '"' : "";
+      var orientClass = work.orientation === "landscape" ? " is-landscape" : "";
+      return (
+        '<div class="modal-video-wrap"><video class="modal-video-native' + orientClass + '" controls playsinline preload="metadata"' + posterAttr + ">" +
+        '<source src="' + work.localVideo + '" type="video/mp4" />' +
+        "お使いのブラウザは動画再生に対応していません。</video></div>"
+      );
+    }
+    var isInstagram = isInstagramUrl(work.externalUrl);
+    if (isInstagram) {
+      var media = work.thumbnail
+        ? '<img src="' + work.thumbnail + '" alt="' + esc(work.title) + '" style="width:100%;display:block;" />'
+        : '<div class="modal-media-emoji">' + (work.emoji || "🎬") + "</div>";
+      return (
+        media +
+        '<div class="modal-instagram-cta"><a href="' + esc(work.externalUrl) + '" target="_blank" rel="noopener noreferrer" class="btn-pop">Instagramでこの投稿を見る ↗</a></div>'
+      );
+    }
+    return '<div class="modal-media-emoji">' + (work.emoji || "🎬") + "</div>";
+  }
+
+  var lastFocused = null;
+  function openModal(work) {
+    lastFocused = document.activeElement;
+    var backdrop = document.getElementById("modal-backdrop");
+
+    var detailRows = "";
+    if (work.responsibilities) detailRows += "<div><dt>担当範囲</dt><dd>" + esc(work.responsibilities.join(" / ")) + "</dd></div>";
+    if (work.tools) detailRows += "<div><dt>使用ツール</dt><dd>" + esc(work.tools.join(" / ")) + "</dd></div>";
+    if (work.duration) detailRows += "<div><dt>動画の長さ</dt><dd>" + esc(work.duration) + "</dd></div>";
+    if (work.note) detailRows += "<div><dt>補足</dt><dd>" + esc(work.note) + "</dd></div>";
+
+    var highlightsHtml = work.highlights && work.highlights.length
+      ? '<div class="modal-highlights"><h4>工夫したポイント</h4><ul>' + work.highlights.map(function (h) { return "<li>" + esc(h) + "</li>"; }).join("") + "</ul></div>"
+      : "";
+
+    backdrop.innerHTML =
+      '<div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">' +
+      '<button type="button" class="modal-close" id="modal-close-btn" aria-label="閉じる">×</button>' +
+      '<div class="modal-media">' + modalMediaHtml(work) + "</div>" +
+      '<div class="modal-body">' +
+      '<span class="badge-pop">' + esc(work.category) + "</span>" +
+      '<h2 id="modal-title" class="modal-title">' + esc(work.title) + "</h2>" +
+      '<p class="modal-desc">' + esc(work.description) + "</p>" +
+      (detailRows ? '<dl class="modal-detail-grid">' + detailRows + "</dl>" : "") +
+      highlightsHtml +
+      "</div></div>";
+
+    backdrop.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    var closeBtn = document.getElementById("modal-close-btn");
+    if (closeBtn) {
+      closeBtn.focus();
+      closeBtn.addEventListener("click", closeModal);
+    }
+    backdrop.addEventListener("mousedown", onBackdropMouseDown);
+    document.addEventListener("keydown", onModalKeyDown);
+  }
+
+  function onBackdropMouseDown(e) {
+    var backdrop = document.getElementById("modal-backdrop");
+    if (e.target === backdrop) closeModal();
+  }
+  function onModalKeyDown(e) {
+    if (e.key === "Escape") { closeModal(); return; }
+    if (e.key !== "Tab") return;
+    // モーダルを開いている間、Tabキーで背後のページに抜けないようにする
+    var panel = document.querySelector("#modal-backdrop .modal-panel");
+    if (!panel) return;
+    var focusable = panel.querySelectorAll('a[href], button, video[controls], [tabindex]:not([tabindex="-1"])');
+    if (!focusable.length) return;
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+  function closeModal() {
+    var backdrop = document.getElementById("modal-backdrop");
+    backdrop.classList.remove("is-open");
+    backdrop.innerHTML = "";
+    document.body.style.overflow = "";
+    document.removeEventListener("keydown", onModalKeyDown);
+    backdrop.removeEventListener("mousedown", onBackdropMouseDown);
+    if (lastFocused && lastFocused.focus) lastFocused.focus();
+  }
+
+  /* ---------------- Boot ---------------- */
+  function init() {
+    var root = document.getElementById("root");
+    root.innerHTML =
+      renderHeader() +
+      "<main>" +
+      renderHero() +
+      renderWorkSection() +
+      renderAbout() +
+      renderSkills() +
+      renderContact() +
+      "</main>" +
+      renderFooter() +
+      '<div class="modal-backdrop" id="modal-backdrop"></div>';
+
+    Array.prototype.forEach.call(document.querySelectorAll(".work-card"), function (btn) {
+      btn.addEventListener("click", function () {
+        var id = Number(btn.getAttribute("data-work-id"));
+        var work = WORKS.filter(function (w) { return w.id === id; })[0];
+        if (work) openModal(work);
+      });
+    });
+
+    function scrollToId(id) {
+      var el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      else if (id === "hero") window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    Array.prototype.forEach.call(document.querySelectorAll("[data-nav]"), function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        scrollToId(a.getAttribute("data-nav"));
+        closeMobileMenu();
+      });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-nav-mobile]"), function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        scrollToId(a.getAttribute("data-nav-mobile"));
+        closeMobileMenu();
+      });
+    });
+
+    var hamburgerBtn = document.getElementById("hamburger-btn");
+    var mobileNav = document.getElementById("mobile-nav");
+    hamburgerBtn.addEventListener("click", function () {
+      var isOpen = mobileNav.classList.toggle("is-open");
+      hamburgerBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    function closeMobileMenu() {
+      mobileNav.classList.remove("is-open");
+      hamburgerBtn.setAttribute("aria-expanded", "false");
+    }
+
+    var header = document.getElementById("site-header");
+    function onScroll() {
+      if (window.scrollY > 40) header.classList.add("is-scrolled");
+      else header.classList.remove("is-scrolled");
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    if (typeof IntersectionObserver !== "undefined") {
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) entry.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+      );
+      document.querySelectorAll(".reveal").forEach(function (el) { observer.observe(el); });
+    } else {
+      document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("visible"); });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+
+</script>
+</body>
+</html>
