@@ -131,7 +131,7 @@ img { max-width: 100%; display: block; }
 /* Header / Nav */
 .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background 0.3s, border-color 0.3s; background: transparent; border-bottom: 2px solid transparent; }
 .site-header.is-scrolled { background: rgba(255,251,240,0.95); backdrop-filter: blur(12px); border-color: var(--ink); }
-.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1rem; }
 .logo-btn { display: flex; align-items: center; gap: 0.5rem; }
 .logo-photo { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--ink); object-fit: cover; box-shadow: 2px 2px 0 var(--ink); }
 .logo-text { font-weight: 900; font-size: 1rem; color: var(--ink); }
@@ -188,7 +188,7 @@ img { max-width: 100%; display: block; }
 @media (min-width: 1000px) { .work-grid { grid-template-columns: repeat(3, minmax(0, 340px)); } }
 .work-card { overflow: hidden; text-align: left; width: 100%; display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start; }
 /* 縦型ショート動画がメインのため、カードも9:16で見せる（横長作品は is-landscape を付ける） */
-.work-card-media { aspect-ratio: 9 / 16; position: relative; overflow: hidden; border-radius: calc(1.25rem - 3px) calc(1.25rem - 3px) 0 0; }
+.work-card-media { aspect-ratio: 9 / 16; position: relative; overflow: hidden; border-radius: calc(1.25rem - 3px) calc(1.25rem - 3px) 0 0; margin-top: 12px; }
 .work-card-media.is-landscape { aspect-ratio: 16 / 9; }
 .work-card-media img, .work-card-media video { width: 100%; height: 100%; object-fit: cover; }
 /* サムネイル素材が未提供の作品用プレースホルダー */
@@ -230,7 +230,10 @@ img { max-width: 100%; display: block; }
 .skills-tag-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; }
 @media (min-width: 700px) { .tool-grid { grid-template-columns: repeat(2, 1fr); } }
 .tool-card { padding: 1.2rem; display: flex; gap: 0.9rem; align-items: flex-start; }
-.tool-emoji { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 2px solid var(--ink); flex-shrink: 0; }
+.tool-emoji { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 2px solid var(--ink); flex-shrink: 0; }
+.tool-mark { color: #fff; font-weight: 800; font-size: 0.95rem; letter-spacing: -0.02em; }
+.tool-mark-sm { font-size: 0.68rem; letter-spacing: -0.01em; }
+.tool-mark-svg { width: 22px; height: 22px; }
 .tool-card h4 { font-size: 0.95rem; margin-bottom: 0.2rem; }
 .tool-card p { font-size: 0.8rem; color: rgba(26,26,46,0.6); }
 .services-title { font-size: 1.15rem; margin-bottom: 1.2rem; }
@@ -238,6 +241,7 @@ img { max-width: 100%; display: block; }
 @media (min-width: 700px) { .service-grid { grid-template-columns: repeat(3, 1fr); } }
 .service-card { padding: 1.4rem; }
 .service-emoji-box { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 2px solid var(--ink); margin-bottom: 1rem; }
+.service-emoji-box svg { width: 24px; height: 24px; }
 .service-card h4 { font-size: 1.05rem; margin-bottom: 0.4rem; }
 .service-card p { font-size: 0.85rem; color: rgba(26,26,46,0.65); }
 
@@ -250,6 +254,7 @@ img { max-width: 100%; display: block; }
 .status-pill { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.6rem 1.2rem; border-radius: 9999px; background: #fff; border: 2px solid var(--ink); font-weight: 700; font-size: 0.85rem; }
 .status-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--teal); }
 .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 1.2rem; }
+.contact-cta-row a, .status-pill, .contact-links a { width: 240px; max-width: 100%; box-sizing: border-box; justify-content: center; }
 
 /* Footer */
 .site-footer { background: var(--ink); border-top: 3px solid var(--ink); padding: 2rem 0; }
@@ -315,18 +320,18 @@ window.CONTACT = {
 window.SKILLS_LIST = ["動画編集", "撮影", "縦型動画", "テロップ", "構成", "SNSコンテンツ"];
 
 window.TOOLS = [
-  { name: "Adobe Premiere Pro", desc: "カット編集からカラー補正まで、動画編集全般のメインツールとして使用", emoji: "🎬", color: "var(--coral)" },
-  { name: "Canva", desc: "サムネイルやSNS投稿用画像の作成に使用", emoji: "🎨", color: "var(--teal)" },
-  { name: "ChatGPT", desc: "構成案・台本・タイトル案の壁打ちや画像生成に使用", emoji: "💬", color: "var(--teal)" },
-  { name: "Claude", desc: "企画整理や台本のブラッシュアップに使用", emoji: "🧠", color: "var(--yellow)" }
+  { name: "Adobe Premiere Pro", desc: "カット編集からカラー補正まで、動画編集全般のメインツールとして使用", color: "#00005B", mark: '<span class="tool-mark">Pr</span>' },
+  { name: "Canva", desc: "サムネイルやSNS投稿用画像の作成に使用", color: "linear-gradient(135deg, #00C4CC 0%, #7D2AE8 100%)", mark: '<span class="tool-mark">C</span>' },
+  { name: "ChatGPT", desc: "構成案・台本・タイトル案の壁打ちや画像生成に使用", color: "#FFFFFF", mark: '<svg class="tool-mark-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#0D0D0D" d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.7854.7854 0 0 0-.407-.667zm2.0107-3.0231-.142-.0852-4.7735-2.7818a.7761.7761 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.4592a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg>' },
+  { name: "Claude", desc: "企画整理や台本のブラッシュアップに使用", color: "#D97757", mark: '<svg class="tool-mark-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke="#fff" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="9"/><line x1="12" y1="15" x2="12" y2="21"/><line x1="3" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="21" y2="12"/><line x1="5.6" y1="5.6" x2="9.5" y2="9.5"/><line x1="14.5" y1="14.5" x2="18.4" y2="18.4"/><line x1="18.4" y1="5.6" x2="14.5" y2="9.5"/><line x1="9.5" y1="14.5" x2="5.6" y2="18.4"/></g></svg>' }
 ];
 
 // AIは独立したサービスにせず、動画制作の強み（スピード）として1枚目の説明に含める。
 // 「何屋か」をブラさないため、主役は動画制作。
 window.SERVICES = [
-  { title: "店舗・カフェ紹介動画", desc: "お店の雰囲気や商品の魅力を、15〜30秒の縦型動画で伝えます。企画・撮影・編集まで一貫して担当し、AIも活用して企画から初稿までをスピーディに進めます。", emoji: "🎬", color: "var(--coral)" },
-  { title: "SNS向け縦型ショート動画", desc: "Instagramリール・TikTokなど、スマホでの視聴に合わせた縦型フォーマットで制作します。", emoji: "📱", color: "var(--yellow)" },
-  { title: "撮影", desc: "店舗やロケでの撮影に対応します。撮影も自分で行うため、編集の仕上がりを見据えたカット設計ができます。", emoji: "📷", color: "var(--teal)" }
+  { title: "店舗・カフェ紹介動画", desc: "お店の雰囲気や商品の魅力を、15〜30秒の縦型動画で伝えます。企画・撮影・編集まで一貫して担当し、AIも活用して企画から初稿までをスピーディに進めます。", color: "var(--coral)", icon: '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10.5V19a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8.5" stroke="var(--ink)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 10.5 4.6 5h14.8L21 10.5" stroke="var(--ink)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 10.5a2.2 2.2 0 0 0 4.4 0 2.2 2.2 0 0 0 4.4 0 2.2 2.2 0 0 0 4.4 0 2.2 2.2 0 0 0 4.4 0" stroke="var(--ink)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 20v-5a2 2 0 0 1 2-2 2 2 0 0 1 2 2v5" stroke="var(--ink)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>' },
+  { title: "SNS向け縦型ショート動画", desc: "Instagramリール・TikTokなど、スマホでの視聴に合わせた縦型フォーマットで制作します。", color: "var(--yellow)", icon: '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6.5" y="2.5" width="11" height="19" rx="2.3" stroke="var(--ink)" stroke-width="1.8"/><line x1="6.5" y1="17.3" x2="17.5" y2="17.3" stroke="var(--ink)" stroke-width="1.8"/><path d="M10.6 9.1v3.8l3.3-1.9-3.3-1.9Z" fill="var(--ink)"/></svg>' },
+  { title: "撮影", desc: "店舗やロケでの撮影に対応します。撮影も自分で行うため、編集の仕上がりを見据えたカット設計ができます。", color: "var(--teal)", icon: '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.2A1.7 1.7 0 0 1 4.7 6.5h2.1l1-1.7h8.4l1 1.7h2.1A1.7 1.7 0 0 1 21 8.2v10.1a1.7 1.7 0 0 1-1.7 1.7H4.7A1.7 1.7 0 0 1 3 18.3V8.2Z" stroke="var(--ink)" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="13" r="4" stroke="var(--ink)" stroke-width="1.8"/></svg>' }
 ];
 
 window.SKILLS_MARQUEE = [
@@ -553,14 +558,14 @@ window.WORKS = [
 
     var toolCards = TOOLS.map(function (t) {
       return (
-        '<div class="card-pop tool-card"><div class="tool-emoji" style="background:' + t.color + ';">' + t.emoji + "</div>" +
+        '<div class="card-pop tool-card"><div class="tool-emoji" style="background:' + t.color + ";" + (t.boxStyle || "") + '">' + t.mark + "</div>" +
         "<div><h4>" + esc(t.name) + "</h4><p>" + esc(t.desc) + "</p></div></div>"
       );
     }).join("");
 
     var serviceCards = SERVICES.map(function (s) {
       return (
-        '<div class="card-pop service-card"><div class="service-emoji-box" style="background:' + s.color + ';">' + s.emoji + "</div>" +
+        '<div class="card-pop service-card"><div class="service-emoji-box" style="background:' + s.color + ';">' + s.icon + "</div>" +
         "<h4>" + esc(s.title) + "</h4><p>" + esc(s.desc) + "</p></div>"
       );
     }).join("");
