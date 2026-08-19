@@ -167,9 +167,7 @@ img { max-width: 100%; display: block; }
 .hero-photo-bg { position: absolute; width: 300px; height: 300px; border-radius: 50%; background: var(--yellow); border: 4px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); }
 .hero-photo { position: relative; width: 260px; height: 260px; border-radius: 50%; object-fit: cover; border: 4px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); }
 .hero-float-badge { position: absolute; z-index: 2; }
-.scroll-cue { position: absolute; left: 50%; bottom: 1.2rem; transform: translateX(-50%); font-size: 1.4rem; color: var(--ink); animation: float 2.2s ease-in-out infinite; }
 
-/* スマホではHeroが縦に長くなりすぎ、↓アイコンが顔写真に重なるため調整 */
 @media (max-width: 640px) {
   .hero { padding: 4.5rem 0 4rem; }
   .hero-grid { gap: 2rem; }
@@ -177,7 +175,6 @@ img { max-width: 100%; display: block; }
   .hero-sub { margin-bottom: 1.5rem; }
   .hero-photo { width: 200px; height: 200px; }
   .hero-photo-bg { width: 236px; height: 236px; }
-  .scroll-cue { display: none; }
 }
 
 /* Section */
@@ -186,10 +183,10 @@ img { max-width: 100%; display: block; }
 .section-title-sub { font-size: 0.85rem; font-weight: 700; color: rgba(26,26,46,0.5); }
 
 /* Work grid */
-.work-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 340px; margin: 0 auto; }
-@media (min-width: 700px) { .work-grid { grid-template-columns: repeat(2, 1fr); max-width: 620px; } }
-@media (min-width: 1000px) { .work-grid { grid-template-columns: repeat(3, 1fr); max-width: 900px; } }
-.work-card { overflow: hidden; text-align: left; width: 100%; }
+.work-grid { display: grid; grid-template-columns: minmax(0, 340px); gap: 1.5rem; justify-content: center; }
+@media (min-width: 700px) { .work-grid { grid-template-columns: repeat(2, minmax(0, 340px)); } }
+@media (min-width: 1000px) { .work-grid { grid-template-columns: repeat(3, minmax(0, 340px)); } }
+.work-card { overflow: hidden; text-align: left; width: 100%; display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start; }
 /* 縦型ショート動画がメインのため、カードも9:16で見せる（横長作品は is-landscape を付ける） */
 .work-card-media { aspect-ratio: 9 / 16; position: relative; overflow: hidden; border-radius: calc(1.25rem - 3px) calc(1.25rem - 3px) 0 0; }
 .work-card-media.is-landscape { aspect-ratio: 16 / 9; }
@@ -261,7 +258,6 @@ img { max-width: 100%; display: block; }
 .footer-brand { display: flex; align-items: center; gap: 0.75rem; }
 .footer-photo { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid var(--yellow); }
 .footer-brand span { color: #fff; font-weight: 700; font-size: 0.9rem; }
-.footer-tag { color: rgba(255,255,255,0.4); font-weight: 700; font-size: 0.85rem; }
 
 /* Modal */
 .modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(26,26,46,0.6); z-index: 100; align-items: center; justify-content: center; padding: 1.25rem; }
@@ -461,7 +457,7 @@ window.WORKS = [
       '<h1 class="hero-headline">店舗・SNSの魅力を、<br /><span class="accent">短い動画</span>で伝える。</h1>' +
       '<p class="hero-sub">' + esc(PROFILE.subcopy) + "</p>" +
       '<div class="hero-cta-row">' +
-      '<button type="button" class="btn-pop" data-nav="work">作品を見る →</button>' +
+      '<button type="button" class="btn-pop" data-nav="work">作品を見る</button>' +
       '<a href="mailto:' + esc(CONTACT.email) + '" class="btn-pop-outline">お仕事のご相談 ✉</a>' +
       "</div>" +
       "</div>" +
@@ -474,7 +470,6 @@ window.WORKS = [
       '<span class="badge-pop" style="background:var(--teal);">AI × SNS ✨</span></span>' +
       "</div>" +
       "</div>" +
-      '<button type="button" class="scroll-cue" data-nav="work" aria-label="下にスクロール">↓</button>' +
       "</section>"
     );
   }
@@ -485,7 +480,7 @@ window.WORKS = [
     if (work.thumbnail) {
       return '<div class="work-card-media' + orientClass + '"><img src="' + work.thumbnail + '" alt="' + esc(work.title) + '" loading="lazy" decoding="async" /></div>';
     }
-    var note = isInstagramUrl(work.externalUrl) ? '<span class="placeholder-note">Instagramで公開中 ↗</span>' : "";
+    var note = isInstagramUrl(work.externalUrl) ? '<span class="placeholder-note">Instagramで公開中</span>' : "";
     return '<div class="work-card-media is-emoji' + orientClass + '">' + (work.emoji || "🎬") + note + "</div>";
   }
 
@@ -589,7 +584,7 @@ window.WORKS = [
   function renderContact() {
     var links = "";
     if (CONTACT.crowdworksUrl) {
-      links += '<a href="' + esc(CONTACT.crowdworksUrl) + '" target="_blank" rel="noopener noreferrer" class="btn-pop-outline" style="font-size:0.85rem;padding:0.6rem 1.4rem;">CrowdWorks →</a>';
+      links += '<a href="' + esc(CONTACT.crowdworksUrl) + '" target="_blank" rel="noopener noreferrer" class="btn-pop-outline" style="font-size:0.85rem;padding:0.6rem 1.4rem;">CrowdWorks</a>';
     }
     CONTACT.sns.forEach(function (s) {
       if (s.url) {
@@ -621,7 +616,6 @@ window.WORKS = [
       '<footer class="site-footer"><div class="container footer-inner">' +
       '<div class="footer-brand"><img src="' + PROFILE.photo + '" alt="' + esc(PROFILE.name) + '" class="footer-photo" loading="lazy" decoding="async" />' +
       "<span>© " + new Date().getFullYear() + " " + esc(PROFILE.name) + "</span></div>" +
-      '<span class="footer-tag">動画 × AI × SNSコンテンツ制作 ✦</span>' +
       "</div></footer>"
     );
   }
@@ -644,7 +638,7 @@ window.WORKS = [
         : '<div class="modal-media-emoji">' + (work.emoji || "🎬") + "</div>";
       return (
         media +
-        '<div class="modal-instagram-cta"><a href="' + esc(work.externalUrl) + '" target="_blank" rel="noopener noreferrer" class="btn-pop">Instagramでこの投稿を見る ↗</a></div>'
+        '<div class="modal-instagram-cta"><a href="' + esc(work.externalUrl) + '" target="_blank" rel="noopener noreferrer" class="btn-pop">Instagramでこの投稿を見る</a></div>'
       );
     }
     return '<div class="modal-media-emoji">' + (work.emoji || "🎬") + "</div>";
