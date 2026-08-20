@@ -201,6 +201,9 @@ img { max-width: 100%; display: block; }
   font-size: 0.78rem; font-weight: 800; color: rgba(26,26,46,0.55);
   border: 2px solid rgba(26,26,46,0.25); border-radius: 9999px; padding: 0.2rem 0.8rem; background: rgba(255,255,255,0.6);
 }
+.work-card-media.is-emoji .placeholder-logo {
+  width: 58%; max-width: 170px; height: auto; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(26,26,46,0.18));
+}
 .work-card-body { padding: 1.5rem; }
 .work-card-tags { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
 .work-card-tags .cat { font-size: 0.75rem; color: rgba(26,26,46,0.5); font-weight: 700; }
@@ -276,6 +279,7 @@ img { max-width: 100%; display: block; }
 .modal-video-native { display: block; width: 100%; max-width: 280px; aspect-ratio: 9 / 16; max-height: 70vh; background: #000; object-fit: contain; }
 .modal-video-native.is-landscape { max-width: 100%; aspect-ratio: 16 / 9; }
 .modal-media-emoji { display: flex; align-items: center; justify-content: center; font-size: 5rem; height: 220px; }
+.modal-media-logo { width: 55%; max-width: 200px; height: auto; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(26,26,46,0.18)); }
 .modal-instagram-cta { display: flex; justify-content: center; padding: 1.2rem; }
 .modal-body { padding: 1.6rem 1.6rem 2rem; }
 .modal-title { font-size: 1.4rem; margin: 0.6rem 0; }
@@ -311,6 +315,7 @@ window.PROFILE = {
 
 window.CONTACT = {
   crowdworksUrl: "https://crowdworks.jp/public/employees/4962787",
+  formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf3y_--55oVIaQNYH-9ClM5j7Cywb2qrO-PtbV0iduRY4Ri1g/viewform",
   email: "satsuki3930@gmail.com",
   // SNSはアカウント開設後にここへ追加する（例: { name: "Instagram", url: "https://..." }）。
   // URLが無いものは表示されない実装だが、空のまま並べると紛らわしいので項目ごと持たない。
@@ -359,6 +364,7 @@ window.WORKS = [
   {
     id: 2,
     emoji: "☕",
+    logoImage: "images/karanashi-logo.webp",
     title: "カフェ紹介Instagramリール『カラナシ』",
     category: "Cafe / Shop",
     thumbnail: "",
@@ -435,7 +441,7 @@ window.WORKS = [
       '<span class="logo-text">' + esc(PROFILE.name) + " ✦</span>" +
       "</button>" +
       '<nav class="nav-links">' + links + "</nav>" +
-      '<a href="mailto:' + esc(CONTACT.email) + '" class="btn-pop nav-cta">お仕事のご相談 ✉</a>' +
+      '<a href="' + esc(CONTACT.formUrl) + '" target="_blank" rel="noopener noreferrer" class="btn-pop nav-cta">お仕事のご相談 ✉</a>' +
       '<button type="button" class="hamburger-btn" id="hamburger-btn" aria-label="メニューを開く" aria-expanded="false">' +
       "<span></span><span></span><span></span>" +
       "</button>" +
@@ -486,7 +492,10 @@ window.WORKS = [
       return '<div class="work-card-media' + orientClass + '"><img src="' + work.thumbnail + '" alt="' + esc(work.title) + '" loading="lazy" decoding="async" /></div>';
     }
     var note = isInstagramUrl(work.externalUrl) ? '<span class="placeholder-note">Instagramで公開中</span>' : "";
-    return '<div class="work-card-media is-emoji' + orientClass + '">' + (work.emoji || "🎬") + note + "</div>";
+    var mark = work.logoImage
+      ? '<img class="placeholder-logo" src="' + esc(work.logoImage) + '" alt="' + esc(work.title) + '" loading="lazy" decoding="async" />'
+      : (work.emoji || "🎬");
+    return '<div class="work-card-media is-emoji' + orientClass + '">' + mark + note + "</div>";
   }
 
   function renderWorkCard(work) {
@@ -640,7 +649,9 @@ window.WORKS = [
     if (isInstagram) {
       var media = work.thumbnail
         ? '<img src="' + work.thumbnail + '" alt="' + esc(work.title) + '" style="width:100%;display:block;" />'
-        : '<div class="modal-media-emoji">' + (work.emoji || "🎬") + "</div>";
+        : work.logoImage
+          ? '<div class="modal-media-emoji"><img class="modal-media-logo" src="' + esc(work.logoImage) + '" alt="' + esc(work.title) + '" loading="lazy" decoding="async" /></div>'
+          : '<div class="modal-media-emoji">' + (work.emoji || "🎬") + "</div>";
       return (
         media +
         '<div class="modal-instagram-cta"><a href="' + esc(work.externalUrl) + '" target="_blank" rel="noopener noreferrer" class="btn-pop">Instagramでこの投稿を見る</a></div>'
